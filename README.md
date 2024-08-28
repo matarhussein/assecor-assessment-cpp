@@ -1,7 +1,6 @@
 # C++ Developer Test
 
-This project involves refactoring the `customer.h` header and developing a library as well as a console application for managing customer data. The refactoring was done to update the code to modern C++ while ensuring backward compatibility with existing programs. Due to time constraints, I was unable to solve task 3 (the application) and the integration test. However, I would be happy to discuss these tasks further during the interview.
-The system is implemented in modern C++17. To compile the project, run the following command:
+This project involves refactoring the `customer.h` header to modern C++ while maintaining backward compatibility with existing programs, and developing a library for managing customer data. Due to time constraints, task 3 (the console application) and the integration test were not completed. I would be happy to discuss these tasks further during the interview. The system is implemented in modern C++17. To compile the project, run the following command:
 ```bash
 g++ -std=c++17 -Wall -Wextra -o unit_test customer.cpp customer_archive.cpp unit_test.cpp
 ```
