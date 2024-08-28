@@ -1,52 +1,38 @@
-# C++ Entwicklertest
+# C++ Developer Test
 
-## Szenario
+This project involves refactoring the `customer.h` header and developing a library as well as a console application for managing customer data. The refactoring was done to update the code to modern C++ while ensuring backward compatibility with existing programs. Due to time constraints, I was unable to solve task 3 (the application) and the integration test. However, I would be happy to discuss these tasks further during the interview.
+The system is implemented in modern C++17. To compile the project, run the following command:
+```bash
+g++ -std=c++17 -Wall -Wextra -o unit_test customer.cpp customer_archive.cpp unit_test.cpp
+```
 
-Deine Firma hat in den letzten 30 Jahren einige verschiedene Programme in C und C++ entwickelt. Um den Entwicklungskosten gering zu halten und den Datenaustausch zwischen den Programmen zu ermöglichen, wurden von Beginn an Bibliotheken benutzt. Einige dieser alten Bibliotheken sollen nun modernisiert und erweitert werden. C-Programme werden in C++ Code überführt.
+## Available Files
 
-## Aufgaben
+To realize this project, the following files have been implemented:
 
-1. Die Datei [customer.h](customer.h) enthält eine C-Datenstruktur, in der Kundendaten gespeichert werden können. Im Unternehmen nutzen verschiedene Applikationen diesen Header. Seit kurzem allerdings keine Programme mehr in C.
-Führe ein Refactoring des Headers customer.h in modernes C++ durch. Ziel ist es das neue Programme und Bibliotheken auf einen modernes Kundendaten-Objekt zurückgreifen können. Stelle dabei aber auch sicher, dass der Header zu schon bestehenden Programmen kompatibel bleibt.
+## Files and Their Functions
 
+### customer.h
+- Contains a C data structure `CUSTOMER` that represents customer data, along with a modern C++ class that encapsulates, validates, and converts the data.
 
-3. Schreibe eine Bibliothek, die Kundendaten speichern kann. Die Bibliothek soll aus zwei Klassen bestehen:
+### customer.cpp
+- Implements the methods of the `Customer` class.
 
-	1. Ein Kunden-Archiv, das folgende Funktionen hat:
-		1. Kunden hinzufügen
-		2. Alle Kunden ausgeben
-		3. Kundendaten zu einer ID ausgeben
-	2. Ein Kundendatenformatierer, der folgendes kann:
-		1. Gibt die Kundendaten zu einer gegebenen ID als schön formatierten Ausgabetext aus.
+### customer_formatter.h
+- Defines the `CustomerFormatter` class, which provides methods to format and output customer data in the required text format.
 
+### customer_archive.h
+- Defines the `CustomerArchive` class, which serves as an archive and provides methods for managing the customer archive.
 
-4. Schreibe eine Konsolenapplikation mit folgenden Funktionen:
-	1. Hinzufügen eines Kunden zum Archiv
-	2. Ausgeben der Kundendaten zu einer ID
-	3. Ausgeben der Liste aller gespeicherten Kundendaten
-	
-## Akzeptanzkriterien
+### customer_archive.cpp
+- Implements the methods of the `CustomerArchive` class.
 
-- Der Header [customer.h](customer.h) ist zu modernem C++ refactored. 
-- Alte Programme, die den Header [customer.h](customer.h) einbinden, müssen nicht geändert werden.
-- Die Bibliothek muss die neue Datenstruktur aus der Datei [customer.h](customer.h) benutzen. 
-- Die Kunden sollen vorerst in-memory gespeichert werden. (Keine Datenbank benötigt)
-- Es gibt Pläne die Bibliothek zu erweitern, so dass sie die Kundendaten auch woanders speichern kann, wie zum Beispiel in einer Datei, einer Datenbank oder in einem Cloud-Speicher. Schreibe die Bibliothek so, dass diese Änderungen in der Zukunft hinzugefügt werden könnten ohne den bestehenden Code ändern zu müssen.
-- Der Kundendatenformatierer ruft die Kundendaten selbständig aus dem Kunden-Archiv. (Unabhängig von der Speichermethode des Archivs)
-- Die Kundendaten sollen für den Ausgabetext in folgendem Format formatiert sein:
-	- Wenn der Kunde gefunden wurde:
-		- `<Nachname>, <Vorname>, <Postleitzahl> <Stadt>, <Lieblingsfarbe>`
-		- Beispiel: "Müller, Hans, 677742 Lauterecken, Blau"
-	- Wenn kein Kunde gefunden wurde:
-		- "(kein Kunde)"
-- Mit der Konsolenapplikation können beliebig viele Kunden angelegt und aus dem Archiv abgerufen werden.
-- Die Konsolenapplikation stellt sicher, dass nur vollständig erfasste Kundendaten im Archiv gespeichert werden.
-		
-## Definition of Done
-- Die Akzeptanzkriterien sind erfüllt.
-- Es existieren Unit-Tests, die Funktionalität des Codes so testen, dass dieser problemlos refactored oder erweitert werden könnte.
-	- Unit-Tests sollten mocked dependencies benutzen.
-- Es existieren Integrationstests.
-- Alle Tests wurden lokal ausgeführt und bestanden.
-- Der Compiler gibt keine Warnings aus.
-- Das Programm kompiliert und lässt sich starten.
+### base_archive.h
+- Defines the abstract `BaseArchiv` class, which provides an interface for a customer archive and specifies the basic methods for managing a customer archive.
+
+### test_main.cpp
+- Implements unit tests to verify the entire project. It checks the functionality of the `Customer` and `CustomerArchive` classes as well as the formatting of customer data to ensure that all methods work as expected. Additionally, it tests the getter methods, handles invalid customer IDs, and verifies the correct conversion and output of customer data in C and C++ formats.
+
+### unit_test.cpp
+- Implements unit tests to verify the `Customer` and `CustomerArchive` classes, including the conversion of customer data to C structures, the functionality of getter methods, data formatting, and the handling of invalid customer IDs.
+
